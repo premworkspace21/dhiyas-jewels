@@ -1,0 +1,61 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Product Details | Dhiyas Jewels</title>
+  <link rel="stylesheet" href="assets/styles.css">
+  <script defer src="assets/app.js"></script>
+  <script>
+    document.addEventListener('DOMContentLoaded', async () => {
+      const url = new URL(window.location.href);
+      const id = url.searchParams.get('id');
+      const catalog = await loadCatalog();
+      const p = findProduct(catalog, id);
+      const el = document.getElementById('product');
+      if (!p) { el.innerHTML = '<p>Product not found.</p>'; return; }
+      document.title = p.name + ' | Dhiyas Jewels';
+      el.innerHTML = `
+        <div class="hero">
+          <img src="${p.images?.[0] || ''}" alt="${p.name}">
+          <div>
+            <h1>${p.name}</h1>
+            <p>${p.description}</p>
+            <p><strong>Category:</strong> ${p.category} · <strong>Rating:</strong> ${p.rating} ⭐ (${p.reviews} reviews)</p>
+            <p class="price">${formatINR(p.price)}</p>
+            <div class="controls">
+              <button class="btn" onclick="addToCart('${p.id}')">Add to Cart</button>
+              <a class="btn secondary" href="shop.html">Back to Shop</a>
+            </div>
+          </div>
+        </div>`;
+      const ld = {
+        "@context":"https://schema.org","@type":"Product",
+        name: p.name,
+        image: p.images,
+        description: p.description,
+        brand: {"@type":"Brand","name":"Dhiyas Jewels"},
+        offers: {"@type":"Offer","priceCurrency":"INR","price": p.price, "availability":"https://schema.org/InStock"},
+        aggregateRating: {"@type":"AggregateRating","ratingValue": p.rating, "reviewCount": p.reviews}
+      };
+      const s = document.createElement('script');
+      s.setAttribute('type','application/ld+json');
+      s.textContent = JSON.stringify(ld);
+      document.head.appendChild(s);
+    });
+  </script>
+</head>
+<body>
+<header>
+  <div class="navbar">
+    <a class="brand" href="index.html">Dhiyas Jewels</a>
+    <nav class="navlinks">
+      <a href="index.html">Home</a>
+      <a href="shop.html">Shop</a>
+      <a href="cart.html">Cart</a>
+    </nav>
+  </div>
+</header>
+<section id="product" class="section"></section>
+</body>
+</html>

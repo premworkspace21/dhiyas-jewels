@@ -1,0 +1,102 @@
+[
+  {
+    "id": "rose-gold-studs",
+    "name": "Rose Gold Stud Earrings",
+    "price": 1999,
+    "currency": "INR",
+    "category": "Studs",
+    "tags": [
+      "rose gold earrings",
+      "stud earrings",
+      "minimalist jewelry"
+    ],
+    "short_description": "Delicate and dazzling, perfect for everyday elegance.",
+    "description": "Delicate and dazzling, these rose gold studs are perfect for everyday elegance. Crafted with premium materials and a flawless finish, they add a subtle sparkle to any look.",
+    "images": [
+      "https://images.unsplash.com/photo-1543294001-f4b88b0c1871?auto=format&fit=crop&w=800&q=80"
+    ],
+    "rating": 4.7,
+    "reviews": 128,
+    "stock": 50
+  },
+  {
+    "id": "crystal-drop-earrings",
+    "name": "Crystal Drop Earrings",
+    "price": 2999,
+    "currency": "INR",
+    "category": "Drops",
+    "tags": [
+      "crystal earrings",
+      "drop earrings",
+      "party jewelry"
+    ],
+    "short_description": "Make a statement with brilliant crystal drops.",
+    "description": "Make a statement with our crystal drop earrings. Designed to catch the light and turn heads, these earrings are ideal for special occasions or a glamorous night out.",
+    "images": [
+      "https://images.unsplash.com/photo-1522335789203-aabd1fc54bc0?auto=format&fit=crop&w=800&q=80"
+    ],
+    "rating": 4.8,
+    "reviews": 96,
+    "stock": 40
+  },
+  {
+    "id": "minimalist-hoops",
+    "name": "Minimalist Hoop Earrings",
+    "price": 1499,
+    "currency": "INR",
+    "category": "Hoops",
+    "tags": [
+      "hoop earrings",
+      "classic",
+      "minimal"
+    ],
+    "short_description": "Classic hoops for a timeless look.",
+    "description": "Classic hoops designed for effortless style. Lightweight and versatile, they complement both ethnic and western outfits.",
+    "images": [
+      "https://images.unsplash.com/photo-1540573131465-4b19eb9a04ba?auto=format&fit=crop&w=800&q=80"
+    ],
+    "rating": 4.6,
+    "reviews": 72,
+    "stock": 70
+  },
+  {
+    "id": "gold-plated-jhumkas",
+    "name": "Gold Plated Jhumkas (Diwali Special)",
+    "price": 3499,
+    "currency": "INR",
+    "category": "Drops",
+    "tags": [
+      "jhumkas",
+      "festive",
+      "gold plated"
+    ],
+    "short_description": "Perfect for festive celebrations.",
+    "description": "Traditional gold plated jhumkas crafted to elevate your festive outfits. Lightweight comfort with standout sparkle.",
+    "images": [
+      "https://images.unsplash.com/photo-1585386959984-a415522316f9?auto=format&fit=crop&w=800&q=80"
+    ],
+    "rating": 4.9,
+    "reviews": 210,
+    "stock": 35
+  },
+  {
+    "id": "kundan-earrings",
+    "name": "Kundan Earrings (Festive)",
+    "price": 4999,
+    "currency": "INR",
+    "category": "Drops",
+    "tags": [
+      "kundan",
+      "traditional",
+      "diwali"
+    ],
+    "short_description": "Traditional elegance for Diwali.",
+    "description": "Handcrafted kundan earrings that blend regal charm with modern finesse—ideal for weddings and festivals.",
+    "images": [
+      "https://images.unsplash.com/photo-1595278064526-08f6c22809e2?auto=format&fit=crop&w=800&q=80"
+    ],
+    "rating": 4.8,
+    "reviews": 154,
+    "stock": 25
+  }
+]

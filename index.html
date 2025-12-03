@@ -1,0 +1,149 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Dhiyas Jewels | Elegant Earrings & Handcrafted Jewelry</title>
+  <meta name="description" content="Elegant Earrings for Every Occasion. Handcrafted jewelry that tells your story. Affordable luxury, timeless design. Sparkle every day with our signature collection.">
+  <meta name="keywords" content="Dhiyas Jewels, earrings, studs, hoops, drops, rose gold earrings, crystal earrings, party jewelry, Hyderabad jewelry">
+  <link rel="canonical" href="https://www.dhiyasjewels.example/">
+  <meta property="og:title" content="Dhiyas Jewels">
+  <meta property="og:description" content="Handcrafted Earrings & Jewelry Designed to Shine">
+  <meta property="og:type" content="website">
+  <meta property="og:image" content="https://images.unsplash.com/photo-1517423440428-a5a00ad493e8?auto=format&fit=crop&w=1200&q=80">
+  <meta name="twitter:card" content="summary_large_image">
+  <link rel="stylesheet" href="assets/styles.css">
+  <script defer src="assets/app.js"></script>
+  <script>
+    document.addEventListener('DOMContentLoaded', async () => {
+      const catalog = await loadCatalog();
+      const featured = catalog.slice(0,4);
+      renderProducts(document.getElementById('featured-grid'), featured);
+    });
+  </script>
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "Organization",
+    "name": "Dhiyas Jewels",
+    "url": "https://www.dhiyasjewels.example/",
+    "logo": "https://www.dhiyasjewels.example/assets/logo.png",
+    "sameAs": [
+      "https://www.instagram.com/dhiyasjewels",
+      "https://www.facebook.com/dhiyasjewels"
+    ]
+  }
+  </script>
+</head>
+<body>
+<header>
+  <div class="navbar">
+    <a class="brand" href="index.html">Dhiyas Jewels</a>
+    <nav class="navlinks">
+      <a href="index.html">Home</a>
+      <a href="#about">About</a>
+      <a href="shop.html">Shop</a>
+      <a href="cart.html">Cart</a>
+      <a href="#contact">Contact</a>
+      <a href="admin.html" title="Manage Products">Admin</a>
+    </nav>
+  </div>
+</header>
+
+<section class="hero">
+  <div>
+    <h1>Discover Timeless Elegance in Every Detail</h1>
+    <p>Handcrafted Earrings & Jewelry Designed to Shine.</p>
+    <div style="margin-top:12px">
+      <a class="btn" href="shop.html">Shop Now</a>
+      <a class="btn secondary" href="#featured">Explore Our Collection</a>
+    </div>
+    <div style="margin-top:16px">
+      <span class="badge">Elegant Earrings for Every Occasion</span>
+      <span class="badge">Handcrafted Jewelry That Tells Your Story</span>
+      <span class="badge">Affordable Luxury, Timeless Design</span>
+      <span class="badge">Sparkle Every Day with Our Signature Collection</span>
+    </div>
+  </div>
+  <img src="https://images.unsplash.com/photo-1517423440428-a5a00ad493e8?auto=format&fit=crop&w=1200&q=80" alt="Hero - Earrings">
+</section>
+
+<section class="section" id="about">
+  <h2>Our Story</h2>
+  <p>At <strong>Dhiyas Jewels</strong>, we believe jewelry is more than an accessory—it’s an expression of individuality. Our artisans craft each piece with precision, using premium materials to ensure beauty and durability.</p>
+</section>
+
+<section class="section" id="featured">
+  <h2>Best Sellers</h2>
+  <div id="featured-grid" class="grid"></div>
+</section>
+
+<section class="section" id="why">
+  <h2>Why Choose Us</h2>
+  <div class="features">
+    <div class="feature"><strong>Handcrafted with love</strong><br>Each piece is made with care by skilled artisans.</div>
+    <div class="feature"><strong>Premium quality materials</strong><br>Only the finest metals and stones.</div>
+    <div class="feature"><strong>Affordable luxury</strong><br>Timeless designs without the premium markup.</div>
+    <div class="feature"><strong>Free shipping & easy returns</strong><br>Hassle-free shopping experience.</div>
+  </div>
+</section>
+
+<section class="section" id="festive">
+  <h2>Celebrate Diwali with Sparkle</h2>
+  <p>Handcrafted Earrings & Jewelry for Indian Festivals and Weddings.</p>
+  <a class="btn" href="shop.html">Shop Diwali Special</a>
+</section>
+
+<section class="section" id="testimonials">
+  <h2>What Our Customers Say</h2>
+  <div class="testimonials">
+    <div class="testimonial">“Absolutely stunning pieces! Perfect for my Diwali outfit.” – Priya S.</div>
+    <div class="testimonial">“Great quality and fast delivery!” – Ankit R.</div>
+    <div class="testimonial">“Love the craftsmanship. Will buy again.” – Meera K.</div>
+  </div>
+</section>
+
+<section class="section" id="contact">
+  <h2>Contact Us</h2>
+  <p>Have questions? We’re here to help!</p>
+  <form action="mailto:support@dhiyasjewels.example" method="post" enctype="text/plain">
+    <div class="controls">
+      <input name="name" placeholder="Your Name" required>
+      <input type="email" name="email" placeholder="Your Email" required>
+    </div>
+    <textarea class="input" name="message" rows="4" placeholder="Your Message"></textarea>
+    <button class="btn" type="submit">Send Message</button>
+  </form>
+  <p style="margin-top:12px">Follow us:
+    <a href="https://instagram.com" target="_blank">Instagram</a> ·
+    <a href="https://facebook.com" target="_blank">Facebook</a> ·
+    <a href="https://pinterest.com" target="_blank">Pinterest</a>
+  </p>
+</section>
+
+<footer class="footer">
+  <div class="cols">
+    <div>
+      <strong>Dhiyas Jewels</strong>
+      <p>Elegant earrings & handcrafted jewelry.</p>
+    </div>
+    <div>
+      <strong>Quick Links</strong>
+      <p><a href="index.html">Home</a> · <a href="shop.html">Shop</a> · <a href="#about">About</a> · <a href="#contact">Contact</a></p>
+    </div>
+    <div>
+      <strong>Newsletter</strong>
+      <p>Join our community for exclusive offers!</p>
+      <div class="controls">
+        <input placeholder="Your email">
+        <button class="btn">Subscribe</button>
+      </div>
+    </div>
+    <div>
+      <strong>Policies</strong>
+      <p><a href="#">Shipping</a> · <a href="#">Returns</a> · <a href="#">Privacy</a></p>
+    </div>
+  </div>
+</footer>
+</body>
+</html>

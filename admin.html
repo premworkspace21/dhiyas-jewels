@@ -1,0 +1,115 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Admin | Dhiyas Jewels</title>
+  <link rel="stylesheet" href="assets/styles.css">
+  <script defer src="assets/app.js"></script>
+  <script>
+    let catalog = [];
+    function refreshTable(){
+      const tbody = document.getElementById('tbody');
+      tbody.innerHTML = '';
+      for(const p of catalog){
+        const tr = document.createElement('tr');
+        tr.innerHTML = `<td>${p.id}</td><td>${p.name}</td><td>${p.category}</td><td>${formatINR(p.price)}</td>
+          <td><button class='btn' onclick="editProduct('${p.id}')">Edit</button> <button class='btn secondary' onclick="deleteProduct('${p.id}')">Delete</button></td>`;
+        tbody.appendChild(tr);
+      }
+    }
+    function setForm(p){
+      document.getElementById('id').value = p?.id || '';
+      document.getElementById('name').value = p?.name || '';
+      document.getElementById('category').value = p?.category || '';
+      document.getElementById('price').value = p?.price || '';
+      document.getElementById('short').value = p?.short_description || '';
+      document.getElementById('desc').value = p?.description || '';
+      document.getElementById('tags').value = (p?.tags||[]).join(', ');
+      document.getElementById('image').value = p?.images?.[0] || '';
+    }
+    function getForm(){
+      return {
+        id: document.getElementById('id').value.trim(),
+        name: document.getElementById('name').value.trim(),
+        category: document.getElementById('category').value.trim(),
+        price: Number(document.getElementById('price').value),
+        currency: 'INR',
+        short_description: document.getElementById('short').value.trim(),
+        description: document.getElementById('desc').value.trim(),
+        tags: document.getElementById('tags').value.split(',').map(t=>t.trim()).filter(Boolean),
+        images: [document.getElementById('image').value.trim()],
+        rating: 5, reviews: 0, stock: 10
+      };
+    }
+    function addOrUpdate(e){ e.preventDefault();
+      const p = getForm();
+      const i = catalog.findIndex(x=>x.id===p.id);
+      if(i>=0) catalog[i]=p; else catalog.push(p);
+      saveCatalog(catalog); refreshTable(); setForm(null);
+    }
+    function editProduct(id){ const p=catalog.find(x=>x.id===id); setForm(p); }
+    function deleteProduct(id){ catalog = catalog.filter(x=>x.id!==id); saveCatalog(catalog); refreshTable(); }
+    function exportJson(){
+      const data = new Blob([JSON.stringify(catalog, null, 2)], {type:'application/json'});
+      const url = URL.createObjectURL(data);
+      const a = document.createElement('a'); a.href = url; a.download = 'products.override.json'; a.click(); URL.revokeObjectURL(url);
+    }
+    function importJson(evt){
+      const file = evt.target.files[0]; if(!file) return;
+      const reader = new FileReader();
+      reader.onload = () => { try { catalog = JSON.parse(reader.result); saveCatalog(catalog); refreshTable(); } catch(e){ alert('Invalid JSON'); } };
+      reader.readAsText(file);
+    }
+    document.addEventListener('DOMContentLoaded', async () => {
+      catalog = await loadCatalog();
+      refreshTable();
+      document.getElementById('form').addEventListener('submit', addOrUpdate);
+      document.getElementById('import').addEventListener('change', importJson);
+    });
+  </script>
+</head>
+<body>
+<header>
+  <div class="navbar">
+    <a class="brand" href="index.html">Dhiyas Jewels</a>
+    <nav class="navlinks">
+      <a href="index.html">Home</a>
+      <a href="shop.html">Shop</a>
+      <a href="cart.html">Cart</a>
+      <a href="admin.html" class="active">Admin</a>
+    </nav>
+  </div>
+</header>
+<section class="section">
+  <h2>Admin – Add / Edit / Remove Products</h2>
+  <form id="form">
+    <div class="controls">
+      <input id="id" placeholder="ID (unique, e.g., rose-gold-studs)" required>
+      <input id="name" placeholder="Product Name" required>
+      <select id="category"><option>Studs</option><option>Hoops</option><option>Drops</option></select>
+    </div>
+    <div class="controls">
+      <input id="price" type="number" placeholder="Price (INR)" required>
+      <input id="image" placeholder="Image URL">
+    </div>
+    <input id="short" placeholder="Short Description">
+    <textarea id="desc" rows="3" placeholder="Full Description"></textarea>
+    <input id="tags" placeholder="Keywords (comma separated)">
+    <div class="controls">
+      <button class="btn" type="submit">Save Product</button>
+      <button class="btn secondary" type="button" onclick="setForm(null)">Clear</button>
+      <button class="btn" type="button" onclick="exportJson()">Export JSON</button>
+      <input id="import" type="file" accept="application/json">
+    </div>
+  </form>
+
+  <h3>Catalog</h3>
+  <table style="width:100%; border-collapse:collapse">
+    <thead><tr><th>ID</th><th>Name</th><th>Category</th><th>Price</th><th>Actions</th></tr></thead>
+    <tbody id="tbody"></tbody>
+  </table>
+  <p><small>Note: Admin changes are saved to your browser (localStorage). To update the server version, export JSON and replace <code>assets/products.json</code> on your hosting.</small></p>
+</section>
+</body>
+</html>

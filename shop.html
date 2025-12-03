@@ -1,0 +1,69 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Shop Earrings | Dhiyas Jewels</title>
+  <meta name="description" content="Explore studs, hoops, and drop earrings. Affordable luxury with fast shipping.">
+  <link rel="stylesheet" href="assets/styles.css">
+  <script defer src="assets/app.js"></script>
+  <script>
+    document.addEventListener('DOMContentLoaded', async () => {
+      const catalog = await loadCatalog();
+      const grid = document.getElementById('shop-grid');
+      let filtered = catalog;
+      function applyFilters() {
+        const q = document.getElementById('q').value.toLowerCase();
+        const cat = document.getElementById('category').value;
+        const sort = document.getElementById('sort').value;
+        filtered = catalog.filter(p =>
+          (!cat || p.category === cat) &&
+          (p.name.toLowerCase().includes(q) || p.tags.join(' ').toLowerCase().includes(q))
+        );
+        if (sort === 'price-asc') filtered.sort((a,b)=>a.price-b.price);
+        if (sort === 'price-desc') filtered.sort((a,b)=>b.price-a.price);
+        if (sort === 'rating') filtered.sort((a,b)=>b.rating-a.rating);
+        renderProducts(grid, filtered);
+      }
+      document.getElementById('q').addEventListener('input', applyFilters);
+      document.getElementById('category').addEventListener('change', applyFilters);
+      document.getElementById('sort').addEventListener('change', applyFilters);
+      applyFilters();
+    });
+  </script>
+</head>
+<body>
+<header>
+  <div class="navbar">
+    <a class="brand" href="index.html">Dhiyas Jewels</a>
+    <nav class="navlinks">
+      <a href="index.html">Home</a>
+      <a href="shop.html" class="active">Shop</a>
+      <a href="cart.html">Cart</a>
+      <a href="admin.html">Admin</a>
+    </nav>
+  </div>
+</header>
+
+<section class="section">
+  <h2>Shop / Collections</h2>
+  <div class="controls">
+    <input id="q" placeholder="Search products (e.g., rose gold, crystal)">
+    <select id="category">
+      <option value="">All Categories</option>
+      <option>Studs</option>
+      <option>Hoops</option>
+      <option>Drops</option>
+    </select>
+    <select id="sort">
+      <option value="">Sort By</option>
+      <option value="price-asc">Price: Low to High</option>
+      <option value="price-desc">Price: High to Low</option>
+      <option value="rating">Top Rated</option>
+    </select>
+  </div>
+  <div id="shop-grid" class="grid"></div>
+</section>
+
+</body>
+</html>

@@ -1,0 +1,47 @@
+
+/* Dhiyas Jewels Styles */
+:root {
+  --primary: #8A2BE2; /* elegant purple */
+  --secondary: #CFA1FF;
+  --dark: #1a1a1a;
+  --light: #ffffff;
+  --accent: #ff6f61;
+}
+* { box-sizing: border-box; }
+body {
+  margin: 0; font-family: 'Inter', system-ui, -apple-system, Segoe UI, Roboto, Arial; color: var(--dark); background: #faf7ff;
+}
+header { position: sticky; top:0; z-index:999; background: var(--light); border-bottom: 1px solid #eee; }
+.navbar { max-width: 1100px; margin: 0 auto; display:flex; align-items:center; justify-content:space-between; padding: 12px 16px; }
+.brand { font-size: 1.25rem; font-weight: 700; color: var(--primary); text-decoration:none; }
+.navlinks a { margin: 0 10px; color: #444; text-decoration:none; font-weight:500; }
+.navlinks a:hover { color: var(--primary); }
+.btn { background: var(--primary); color: var(--light); border: none; padding: 10px 16px; border-radius: 6px; cursor: pointer; }
+.btn.secondary { background: var(--accent); }
+.hero { max-width: 1100px; margin: 24px auto; padding: 24px; display:grid; grid-template-columns: 1.2fr 1fr; gap: 24px; align-items:center; }
+.hero h1 { font-size: 2.2rem; margin: 0 0 8px; }
+.hero p { font-size: 1rem; }
+.hero img { width: 100%; border-radius: 12px; box-shadow: 0 10px 24px rgba(0,0,0,.08); }
+.section { max-width: 1100px; margin: 24px auto; padding: 0 24px; }
+.section h2 { font-size: 1.6rem; margin-bottom: 12px; }
+.grid { display:grid; grid-template-columns: repeat(4, 1fr); gap: 16px; }
+.card { background: var(--light); border-radius: 10px; overflow: hidden; box-shadow: 0 8px 16px rgba(0,0,0,.06); display:flex; flex-direction:column; }
+.card img { width: 100%; height: 180px; object-fit: cover; }
+.card .content { padding: 12px; }
+.price { font-weight: 700; color: var(--primary); }
+.badge { display:inline-block; background:#f1e6ff; color:#6b3fb9; padding:4px 8px; border-radius: 999px; font-size: .75rem; margin-right:6px; }
+.features { display:grid; grid-template-columns: repeat(4, 1fr); gap: 16px; }
+.feature { background: var(--light); padding: 16px; border-radius: 10px; box-shadow: 0 8px 16px rgba(0,0,0,.06); }
+.testimonials { display:grid; grid-template-columns: repeat(3, 1fr); gap: 16px; }
+.testimonial { background: var(--light); padding: 16px; border-radius: 10px; box-shadow: 0 8px 16px rgba(0,0,0,.06); }
+.footer { background:#111; color:#eee; padding: 24px; }
+.footer a { color:#ddd; text-decoration:none; }
+.footer .cols { display:grid; grid-template-columns: repeat(4, 1fr); gap: 16px; max-width:1100px; margin:0 auto; }
+.input, input, select { width: 100%; padding: 10px; border: 1px solid #ddd; border-radius: 8px; }
+.controls { display:flex; gap: 8px; margin-bottom: 16px; }
+@media (max-width: 900px) {
+  .hero { grid-template-columns: 1fr; }
+  .grid { grid-template-columns: repeat(2, 1fr); }
+  .features { grid-template-columns: repeat(2, 1fr); }
+  .testimonials { grid-template-columns: 1fr; }
+}

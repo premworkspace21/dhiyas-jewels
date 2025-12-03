@@ -1,0 +1,67 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Your Cart | Dhiyas Jewels</title>
+  <link rel="stylesheet" href="assets/styles.css">
+  <script defer src="assets/app.js"></script>
+  <script>
+    function renderCart() {
+      const cart = loadCart();
+      const table = document.getElementById('cart-body');
+      table.innerHTML = '';
+      loadCatalog().then(catalog => {
+        let total = 0;
+        for (const item of cart) {
+          const p = findProduct(catalog, item.id);
+          if (!p) continue;
+          const lineTotal = p.price * item.qty; total += lineTotal;
+          const tr = document.createElement('tr');
+          tr.innerHTML = `
+            <td>${p.name}</td>
+            <td>${item.qty}</td>
+            <td>${formatINR(p.price)}</td>
+            <td>${formatINR(lineTotal)}</td>
+            <td><button class="btn" onclick="removeItem('${p.id}')">Remove</button></td>`;
+          table.appendChild(tr);
+        }
+        document.getElementById('cart-total').textContent = formatINR(total);
+      });
+    }
+    function clearCart(){ saveCart([]); renderCart(); }
+    function removeItem(id){
+      const cart = loadCart().filter(i => i.id !== id);
+      saveCart(cart); renderCart();
+    }
+    document.addEventListener('DOMContentLoaded', renderCart);
+  </script>
+</head>
+<body>
+<header>
+  <div class="navbar">
+    <a class="brand" href="index.html">Dhiyas Jewels</a>
+    <nav class="navlinks">
+      <a href="index.html">Home</a>
+      <a href="shop.html">Shop</a>
+      <a href="cart.html" class="active">Cart</a>
+    </nav>
+  </div>
+</header>
+<section class="section">
+  <h2>Your Cart</h2>
+  <table style="width:100%; border-collapse:collapse">
+    <thead>
+      <tr><th>Product</th><th>Qty</th><th>Price</th><th>Subtotal</th><th>Action</th></tr>
+    </thead>
+    <tbody id="cart-body"></tbody>
+  </table>
+  <h3>Total: <span id="cart-total">₹0</span></h3>
+  <div class="controls">
+    <button class="btn" onclick="clearCart()">Clear Cart</button>
+    <a class="btn secondary" href="shop.html">Continue Shopping</a>
+  </div>
+  <p><em>Checkout placeholder:</em> Integrate Razorpay/UPI later.</p>
+</section>
+</body>
+</html>
